@@ -34,15 +34,15 @@ The 2021 data (January to July) was ingested using Kestra's **Backfill** feature
 
 ### Q3: How many rows are there for the Yellow Taxi data for all CSV files in the year 2020?
 **Answer:** `24,648,499`
-* *Verified via BigQuery:* `SELECT count(*) FROM `tactile-anthem-485519-v6.zoomcamp.yellow_tripdata` WHERE filename LIKE 'yellow_tripdata_2020%'`
+* *Verified via BigQuery:* `SELECT count(*) FROM ``tactile-anthem-485519-v6.zoomcamp.yellow_tripdata`` WHERE filename LIKE 'yellow_tripdata_2020%'`
 
 ### Q4: How many rows are there for the Green Taxi data for all CSV files in the year 2020?
 **Answer:** `1,734,051`
-* *Verified via BigQuery:* `SELECT count(*) FROM `tactile-anthem-485519-v6.zoomcamp.green_tripdata` WHERE filename LIKE 'green_tripdata_2020%'`
+* *Verified via BigQuery:* `SELECT count(*) FROM ``tactile-anthem-485519-v6.zoomcamp.green_tripdata`` WHERE filename LIKE 'green_tripdata_2020%'`
 
 ### Q5: How many rows are there for the Yellow Taxi data for the March 2021 CSV file?
 **Answer:** `1,925,152`
-* *Verified via BigQuery:* `SELECT count(*) FROM `tactile-anthem-485519-v6.zoomcamp.yellow_tripdata` WHERE filename = 'yellow_tripdata_2021-03.csv'`;
+* *Verified via BigQuery:* `SELECT count(*) FROM ``tactile-anthem-485519-v6.zoomcamp.yellow_tripdata`` WHERE filename = 'yellow_tripdata_2021-03.csv'`;
 
 
 ### Q6: How would you configure the timezone to New York in a Schedule trigger?

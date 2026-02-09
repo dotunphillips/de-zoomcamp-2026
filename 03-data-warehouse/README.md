@@ -46,7 +46,7 @@ SELECT * FROM `tactile-anthem-485519-v6.zoomcamp.yellow_tripdata_2024Q1Q2_extern
 ### Q4. Counting Zero Fare Trips
 * **Query:** ```sql
     SELECT COUNT(*) 
-    FROM `your_project.your_dataset.yellow_tripdata_2024Q1Q2_native` 
+    FROM \`tactile-anthem-485519-v6.zoomcamp.yellow_tripdata_2024Q1Q2_native\` 
     WHERE fare_amount = 0;
     ```
 * **Answer:** 8,333

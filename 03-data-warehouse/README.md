@@ -18,7 +18,7 @@ OPTIONS (
   uris = ['gs://kestra-zoomcamp-dotunphillips-123/yellow_tripdata_2024-*.parquet']
 );
 
--- 2. Create Native (Materialized) Table
+-- 2. Create Native Table
 CREATE OR REPLACE TABLE `tactile-anthem-485519-v6.zoomcamp.yellow_tripdata_2024Q1Q2_native` AS
 SELECT * FROM `tactile-anthem-485519-v6.zoomcamp.yellow_tripdata_2024Q1Q2_external`;
 

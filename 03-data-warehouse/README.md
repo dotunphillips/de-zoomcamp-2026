@@ -63,4 +63,3 @@ SELECT * FROM `tactile-anthem-485519-v6.zoomcamp.yellow_tripdata_2024Q1Q2_extern
 ### Q9. Metadata Queries (The 0 Byte Scan)
 * **Logic:** When you perform a simple `COUNT(*)` on a native BigQuery table without any `WHERE` clauses, BigQuery retrieves the result directly from the **table metadata** rather than scanning the actual rows of the table.
 * **Answer:** 0 bytes.
->>>>>>> e331f35 (Complete Module 3 warehouse logic and README)

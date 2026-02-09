@@ -33,3 +33,33 @@ CREATE OR REPLACE TABLE `tactile-anthem-485519-v6.zoomcamp.yellow_tripdata_2024Q
 PARTITION BY DATE(tpep_dropoff_datetime)
 CLUSTER BY VendorID AS
 SELECT * FROM `tactile-anthem-485519-v6.zoomcamp.yellow_tripdata_2024Q1Q2_external`;
+
+## 📝 Homework Walkthrough & Logic
+
+### Q1. Counting Records
+* **Answer:** 20,332,093
+
+### Q2. Data Read Estimation (External vs. Native)
+* **Logic:** BigQuery stores **native metadata** for materialized tables, which allows it to provide a byte estimation before the query runs. External tables require reading the files from GCS at runtime to determine the schema and data size, resulting in a **0 MB** initial estimate in the query validator.
+* **Answer:** 0 MB for the External Table and 155.12 MB for the Materialized Table.
+
+### Q4. Counting Zero Fare Trips
+* **Query:** ```sql
+    SELECT COUNT(*) 
+    FROM `your_project.your_dataset.yellow_tripdata_2024Q1Q2_native` 
+    WHERE fare_amount = 0;
+    ```
+* **Answer:** 8,333
+
+### Q5. Partitioning and Clustering Strategy
+* **Logic:** **Partitioning** by date (`tpep_dropoff_datetime`) physically separates the data into segments, making date-range filters much faster. **Clustering** by `VendorID` sorts the data within those partitions, which optimizes queries that group or filter by that specific ID.
+* **Answer:** Partition by `tpep_dropoff_datetime` and Cluster on `VendorID`.
+
+### Q6. Impact of Partitioning on Performance
+* **Non-Partitioned Scan:** ~310.24 MB
+* **Partitioned Scan:** ~26.84 MB
+* **Answer:** 310.24 MB for non-partitioned table and 26.84 MB for the partitioned table.
+
+### Q9. Metadata Queries (The 0 Byte Scan)
+* **Logic:** When you perform a simple `COUNT(*)` on a native BigQuery table without any `WHERE` clauses, BigQuery retrieves the result directly from the **table metadata** rather than scanning the actual rows of the table.
+* **Answer:** 0 bytes.

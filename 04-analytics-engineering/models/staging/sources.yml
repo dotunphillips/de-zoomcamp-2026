@@ -23,3 +23,4 @@ sources:
                 importance: high
                 formatting: none
       - name: yellow_tripdata
+      - name: fhv_tripdata

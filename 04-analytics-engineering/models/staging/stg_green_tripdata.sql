@@ -1,6 +1,7 @@
 SELECT 
     -- identifiers
     CAST(vendorid AS int64) AS vendor_id,
+    'Green' AS service_type,
     CAST(ratecodeid AS int64) AS rate_code_id,
     CAST(pulocationid AS int64) AS pickup_location_id,
     CAST(dolocationid AS int64) AS dropoff_location_id,

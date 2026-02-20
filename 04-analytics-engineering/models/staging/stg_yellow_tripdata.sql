@@ -1,6 +1,7 @@
 SELECT
     -- identifiers
     CAST(vendorid AS int64) AS vendor_id,
+    'Yellow' AS service_type,
     CAST(ratecodeid AS int64) AS rate_code_id,
     CAST(pulocationid AS int64) AS pickup_location_id,
     CAST(dolocationid AS int64) AS dropoff_location_id,
@@ -12,7 +13,7 @@ SELECT
     -- trip info
     store_and_fwd_flag,
     CAST(passenger_count AS int64) AS passenger_count, 
-    CAST(trip_distance AS float64) AS trip_distance,   
+    CAST(trip_distance AS numeric) AS trip_distance,   
     1 AS trip_type, 
 
     -- payment info

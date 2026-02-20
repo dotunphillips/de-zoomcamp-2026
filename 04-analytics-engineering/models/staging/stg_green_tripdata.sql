@@ -29,3 +29,4 @@ SELECT
 
 FROM {{ source('raw_data', 'green_tripdata') }}
 WHERE vendorid IS NOT NULL
+    AND payment_type IN (1, 2, 3, 4, 5)

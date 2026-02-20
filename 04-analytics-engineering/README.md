@@ -5,7 +5,6 @@ This project demonstrates the use of dbt (Data Build Tool) with Google BigQuery 
 ## Project Details
 * **GCP Project ID:** `tactile-anthem-485519-v6`
 * **Target Dataset:** `dbt_prod`
-* **dbt Version:** 1.11.0-post29
 
 
 

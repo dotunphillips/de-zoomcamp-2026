@@ -10,6 +10,7 @@ materialization:
     type: table
     strategy: time_interval
     incremental_key: pickup_datetime
+    time_granularity: timestamp
 
 custom_checks:
   - name: row_count_positive

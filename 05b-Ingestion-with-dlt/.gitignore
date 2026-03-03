@@ -1,0 +1,11 @@
+# Ignore the DuckDB database
+*.duckdb
+*.duckdb.wal
+
+# Ignore dlt logs and state
+.dlt/
+pip-log.txt
+
+# Python folders
+__pycache__/
+venv/

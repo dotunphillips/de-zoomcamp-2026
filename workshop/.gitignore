@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# Data (Crucial: do not upload the heavy parquet files)
+*.parquet
+*.csv
+data/
+
+# Docker
+.env
+
+# IDE
+.vscode/
+.idea/

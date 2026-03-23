@@ -23,8 +23,51 @@ This repository contains my implementation of a streaming data pipeline using **
 | **Q5: Longest Session** | `81` |
 | **Q6: Largest Tip Hour** | `2025-10-16 18:00:00` |
 
-### Note on Question 6
-While the official benchmark for the 2026 dataset is `2025-10-22 08:00:00`, my local analysis (verified via both PyFlink and DuckDB batch processing) definitively identified `2025-10-16 18:00:00` as the peak for my specific source file. I have opted to submit the result reflected by my data audit.
+## Detailed Work & Verification
+
+### Q1 & Q2: Infrastructure & Throughput
+The Redpanda version was verified via `docker exec`:
+```bash
+docker exec -it redpanda-1 rpk version
+```
+### Q3 & Q4: Stream Analytics (PyFlink SQL)
+```sql
+-- Distance Filter
+SELECT count(*) FROM green_tripdata WHERE trip_distance > 5;
+
+-- Top PULocationID
+SELECT PULocationID, count(*) as cnt 
+FROM green_tripdata 
+GROUP BY PULocationID 
+ORDER BY cnt DESC LIMIT 1;
+```
+
+### Q5: Session Windowing
+```sql
+SELECT 
+    window_start, window_end, 
+    TIMESTAMPDIFF(MINUTE, window_start, window_end) as duration
+FROM TABLE(SESSION(TABLE events, DESCRIPTOR(event_time), INTERVAL '5' MINUTES))
+ORDER BY duration DESC LIMIT 1;
+```
+
+### Q6: Streaming Aggregation
+```sql
+SELECT 
+    window_start, 
+    window_end, 
+    SUM(tip_amount) AS total_tip
+FROM TABLE(
+    TUMBLE(
+        TABLE green_tripdata, 
+        DESCRIPTOR(lpep_pickup_datetime), 
+        INTERVAL '1' HOURS
+    )
+)
+GROUP BY window_start, window_end
+ORDER BY total_tip DESC 
+LIMIT 1;
+```
 
 ## How to Run
 1. Start infrastructure: `docker-compose up -d`
